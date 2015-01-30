@@ -6,11 +6,11 @@
 double f(double x)
 {
 	return 4*x*x*x - 3*x*x + 6*x - 10;
-	}    /*funkcja podlegajaca calkowaniu. */
+	}    /*dana funkcja podlegajaca calkowaniu. */
 double calka_ozn(double x, double a, double b, double c)
 {
 	return a*x*x*x/3 + b*x*x/2 + c*x;
-	}
+	}  /*funcja pomagająca przy obliczaniu całki oznaczonej*/
 int main(int argc, char *argv[]) /*(a,b)-przedział, n-liczba podprzdzialow na które dzielimy przedzial */
 {       
 	double a= argc >1 ? atof(argv[1]) : 0;
@@ -26,8 +26,8 @@ int main(int argc, char *argv[]) /*(a,b)-przedział, n-liczba podprzdzialow na k
 		double sr = (x1+x2)/2;		/*srodek przedzialu*/
 		double wa = (f(x2)-f(x1) - (f(sr)-f(x1)) * (x2-x1)/(sr-x1)) / (x2*x2-x1*x1 - (sr*sr-x1*x1) * (x2-x1)/(sr-x1));
 		double wb = (f(sr)-f(x1) - wa*(sr*sr-x1*x1)) / sr-x1;
-		double wc = f(x1) - wa*x1*x1 - wb*x1;
-		calka = calka + calka_ozn(x2, wa, wb, wc) - calka_ozn(x1, wa, wb, wc);
+		double wc = f(x1) - wa*x1*x1 - wb*x1;			/*wa, wb, wc - współczynniki wzoru paraboli*/
+		calka = calka + calka_ozn(x2, wa, wb, wc) - calka_ozn(x1, wa, wb, wc);	/*oblicznie całki oznaczonej dla konkretnych przedziałow*/
 		}
 	printf("%g\n",calka);
 	return 0;
