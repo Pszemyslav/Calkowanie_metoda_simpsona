@@ -3,18 +3,8 @@
 #include <math.h>
 #include <string.h>
 
-/*funkcja podlegajaca calkowaniu. */
-double f(double x)
+double calnum(double a, double b, int n, double (*f) (double))
 {
-	return 4*x*x*x - 3*x*x + 6*x - 10;
-}
-
-/*(a,b)-przedział, n-liczba podprzdzialow na które dzielimy przedzial */
-int main(int argc, char *argv[])
-{       
-	double a = argc >1 ? atof(argv[1]) : 0;
-	double b = argc >2 ? atof(argv[2]) : 10;
-	int n = argc >3 ? atoi(argv[3]) : 100;
 	int i;
 
 	double h=(b-a)/n;
@@ -28,6 +18,14 @@ int main(int argc, char *argv[])
 		/*W tym programie "h" jest to szerokość całego podprzedziału, a nie jego połowa. Stąd we wzorze obok dzielę przez 6, a nie przez 3*/
 		calka = calka + h*( f(x1) + 4*f(sr) + f(x2) )/6;  
 	}
+}
+
+int main(int argc, char *argv[])
+{       
+	double a = argc >1 ? atof(argv[1]) : 0;
+	double b = argc >2 ? atof(argv[2]) : 10;
+	int n = argc >3 ? atoi(argv[3]) : 100;
+	double calka = calnum(a, b, n, sin);
 	printf("%g\n",calka);
 	return 0;
 }
