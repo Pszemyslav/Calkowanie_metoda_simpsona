@@ -7,7 +7,7 @@
 double f(double x)
 {
 	return 4*x*x*x - 3*x*x + 6*x - 10;
-	}    /*funkcja podlegajaca calkowaniu. */
+}		/*funkcja podlegajaca calkowaniu. */
 
 double calnum(double a, double b, int n, double (*f)(double))
 {
@@ -23,9 +23,9 @@ double calnum(double a, double b, int n, double (*f)(double))
 		calka = calka + h*( f(x1) + 4*f(sr) + f(x2) )/6;	
 			/*W tym programie "h" jest to szerokośćcałego podprzedziału, 
 			a nie jego połowa. Stąd we wzorze obok dzielę przez 6,a nie przez 3*/
-		}
-	return calka;
 	}
+	return calka;
+}
 
 int main(int argc, char *argv[]) 	/*(a,b)-przedział, n-liczba podprzdzialow na które dzielimy przedzial */
 {       
@@ -35,4 +35,4 @@ int main(int argc, char *argv[]) 	/*(a,b)-przedział, n-liczba podprzdzialow na 
 
 	printf("%g\n",calnum(a, b, n, f));
 	return 0;
-	}
+}
